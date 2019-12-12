@@ -1,0 +1,28 @@
+<h3><a class="btn btn-secondary" href="/employee"><i class="fa fa-plus">Add New</i></a>&nbsp {{viewTitle}}</h3>
+<table class="table table-striped">
+<thead>
+    <th>Fullname</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>City</th>
+    <th>Image</th>
+    <th>Actions</th>
+</thead>
+<tbody>
+{{#each list}}
+<tr>
+<td>{{this.fullname}}</td>
+<td>{{this.email}}</td>
+<td>{{this.mobile}}</td>
+<td>{{this.city}}</td>
+<td><img src="/uploads/{{this.image}}"style="height:70px; width:80px; border-radius:30px;"></td>
+
+<td>
+    <a href="/employee/{{this._id}}" class="btn btn-info" title="Edit"><i class="fa fa-pencil"></i></a>&nbsp;
+    <a href="/employee/delete/{{this._id}}" class="btn btn-danger" title="Delete" onclick="return confirm('are you sure you want to delete this?')"><i  class="fa fa-trash"></i></a>
+</td>
+
+{{/each}}
+</tr>
+</tbody>
+</table>
