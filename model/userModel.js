@@ -1,6 +1,6 @@
 const mongoose= require('mongoose');
 var userSchema =new mongoose.Schema({
-    username:{type: String,
+    fullname:{type: String,
     required:'Fullname field is required!'
     },
     email:{type: String,
@@ -10,10 +10,10 @@ var userSchema =new mongoose.Schema({
         required:'Email field is required!'
         },
 
-    mobile:{type: String,
+    city:{type: String,
     required:'Mobile field is required!'
     },
-    city:{type: String,
+    mobile:{type: String,
     required:'City field is required!'
     },
     image:{type: String,

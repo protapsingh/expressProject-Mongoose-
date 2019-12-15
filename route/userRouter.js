@@ -1,8 +1,9 @@
 var express=require('express');
 const router=express.Router();
 const path=require('path');
-const employeeController=require('../controller/employeeController');
+const userController=require('../controller/userController');
 const multer= require('multer');
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'uploads')
@@ -15,13 +16,11 @@ var storage = multer.diskStorage({
   // or use this
 //   // const upload = multer({dest: './uploads/'});
 
-router.get('/signUp',(req,res)=>{
-    res.render("user/signUp",{viewTitle:'Sign Up Here!',layout:'welcomeLayout.hbs'});
-});
+router.get('/signUp',userController.userCreate);
+router.post('/signUp',upload.single('image'),userController.userStore);
+router.get('/login',userController.userLogin);
 
-router.get('/login',(req,res)=>{
-  res.render("user/login",{viewTitle:'Login Here!',layout:'welcomeLayout.hbs'});
-});
+
 
 
 module.exports=router;

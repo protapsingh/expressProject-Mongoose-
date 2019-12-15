@@ -1,48 +1,51 @@
 <h3>{{viewTitle}}</h3>
-<form action="#" enctype="multipart/form-data"  method="post">
+<form action="/user/signup" enctype="multipart/form-data"  method="post">
     <div class="form-group col-md-6">
         <label>Full Name</label>
         <input type="text" class="form-control" name="fullname" placeholder="Fullname" value="{{employee.mobile}}">
         <div class="text-danger">
-        {{employee.mobileError}}
+        {{user.fullname}}
         </div>
     </div>
     <div class="form-group col-md-6">
         <label>Email</label>
         <input type="email" class="form-control" name="email" placeholder="Email Address" value="{{employee.city}}">
         <div class="text-danger">
-        {{employee.cityError}}
+        {{user.email}}
         </div>
     </div>
      <div class="form-group col-md-6">
         <label>Password</label>
         <input type="password" class="form-control" name="password" placeholder="password" value="{{employee.city}}">
         <div class="text-danger">
-        {{employee.cityError}}
+        {{user.password}}
         </div>
     </div>
     <div class="form-group col-md-6">
         <label>City</label>
         <input type="text" class="form-control" name="city" placeholder="City" value="{{employee.city}}">
         <div class="text-danger">
-        {{employee.cityError}}
+        {{user.city}}
         </div>
     </div>
     <div class="form-group col-md-6">
         <label>Mobile</label>
         <input type="text" class="form-control" name="mobile" placeholder="Mobile Number" value="{{employee.city}}">
         <div class="text-danger">
-        {{employee.cityError}}
+        {{user.mobile}}
         </div>
     </div>
     <div class="form-group col-md-6">
         <label>Iamge</label>
         <input type="file" class="form-control" name="image">
         <div class="text-danger">
-        {{employee.cityError}}
+        {{employee.image}}
         </div>
     </div>
     <div class="form-group">
-    <center><button type="submit" class="btn btn-success"><i class="fa fa-database">Submit Now</i></button></center>
+    <center>
+        <button type="submit" class="btn btn-success"><i class="fa fa-database">Submit Now</i></button>
+        <p></br> Already registered???<a href="/user/login"> Login Now!</a></p></center>
+    </center>
     </div>
 </form>
