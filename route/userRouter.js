@@ -15,8 +15,12 @@ var storage = multer.diskStorage({
   // or use this
 //   // const upload = multer({dest: './uploads/'});
 
-router.get('/',(req,res)=>{
-    res.send("welcome jacky");
+router.get('/signUp',(req,res)=>{
+    res.render("user/signUp",{viewTitle:'Sign Up Here!',layout:'welcomeLayout.hbs'});
+});
+
+router.get('/login',(req,res)=>{
+  res.render("user/login",{viewTitle:'Login Here!',layout:'welcomeLayout.hbs'});
 });
 
 
