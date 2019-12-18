@@ -2,44 +2,44 @@
 <form action="/user/signup" enctype="multipart/form-data"  method="post">
     <div class="form-group col-md-6">
         <label>Full Name</label>
-        <input type="text" class="form-control" name="fullname" placeholder="Fullname" value="{{employee.mobile}}">
+        <input type="text" class="form-control" name="fullname" placeholder="Fullname" value="{{user.fullname}}">
         <div class="text-danger">
-        {{user.fullname}}
+        {{user.fullNameError}}
         </div>
     </div>
     <div class="form-group col-md-6">
         <label>Email</label>
-        <input type="email" class="form-control" name="email" placeholder="Email Address" value="{{employee.city}}">
+        <input type="email" class="form-control" name="email" placeholder="Email Address" value="{{user.email}}">
         <div class="text-danger">
-        {{user.email}}
+        {{user.emailError}}
         </div>
     </div>
      <div class="form-group col-md-6">
         <label>Password</label>
-        <input type="password" class="form-control" name="password" placeholder="password" value="{{employee.city}}">
+        <input type="password" class="form-control" name="password" placeholder="password">
         <div class="text-danger">
-        {{user.password}}
+        {{user.passwordError}}
         </div>
     </div>
     <div class="form-group col-md-6">
         <label>City</label>
-        <input type="text" class="form-control" name="city" placeholder="City" value="{{employee.city}}">
+        <input type="text" class="form-control" name="city" placeholder="City" value="{{user.city}}">
         <div class="text-danger">
-        {{user.city}}
+        {{user.cityError}}
         </div>
     </div>
     <div class="form-group col-md-6">
         <label>Mobile</label>
-        <input type="text" class="form-control" name="mobile" placeholder="Mobile Number" value="{{employee.city}}">
+        <input type="text" class="form-control" name="mobile" placeholder="Mobile Number" value="{{user.mobile}}">
         <div class="text-danger">
-        {{user.mobile}}
+        {{user.mobileError}}
         </div>
     </div>
     <div class="form-group col-md-6">
-        <label>Iamge</label>
+        <label>Image</label>
         <input type="file" class="form-control" name="image">
         <div class="text-danger">
-        {{employee.image}}
+        {{user.imageError}}
         </div>
     </div>
     <div class="form-group">

@@ -26,6 +26,11 @@ exports.userStore=async (req,res,next)=>{
 
 }
 
+exports.userLogin=(req,res)=>{
+    res.render("user/login",{viewTitle:'Login Here!',layout:'welcomeLayout.hbs'});
+}
+
+
 function add_user(req,res){
 
    bcrypt.hash(req.body.password, 10, function(err, hash) {
@@ -40,9 +45,17 @@ function add_user(req,res){
 
    user.save((err,doc)=>{
        if (!err){
-           res.send('successfully saved');
+           const msg="Successfully Registered! Login now!"
+         res.render("user/login",{viewTitle:'Login Here!', message:msg,layout:'welcomeLayout.hbs'});
+
        }else{
-        throw err;
+        if(err.name=='ValidationError'){
+            handleValidationError(err,req.body);
+            res.render('user/signUp',{viewTitle:'Sign Up Here!' ,layout:'welcomeLayout.hbs',user:req.body}); 
+            }
+            else{
+                 console.log('error during record insertion: '+ err);
+            }
        } 
    })
   });
@@ -50,6 +63,31 @@ function add_user(req,res){
    
 }
 
-exports.userLogin=(req,res)=>{
-    res.render("user/login",{viewTitle:'Login Here!',layout:'welcomeLayout.hbs'});
+function handleValidationError(err,body){
+    for(field in err.errors)
+    {
+         switch(err.errors[field].path)
+         {
+              case 'fullname':
+              body['fullNameError']=err.errors[field].message;
+              break;
+              case 'email':
+              body['emailError']=err.errors[field].message;
+              break;
+              case 'password':
+              body['passwordError']=err.errors[field].message;
+              break;
+              case 'city':
+              body['cityError']=err.errors[field].message;
+              break;
+              case 'mobile':
+              body['mobileError']=err.errors[field].message;
+              break;
+              case 'image':
+              body['imageError']=err.errors[field].message;
+              break;
+         }
+    }
 }
+
+

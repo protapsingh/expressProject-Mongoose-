@@ -55,29 +55,6 @@ exports.delete_employee=(req,res)=>{
 
 }
 // creating a function which will used to show all error messages
-function handleValidationError(err,body){
-     for(field in err.errors)
-     {
-          switch(err.errors[field].path)
-          {
-               case 'fullname':
-               body['fullNameError']=err.errors[field].message;
-               break;
-               case 'email':
-               body['emailError']=err.errors[field].message;
-               break;
-               case 'mobile':
-               body['mobileError']=err.errors[field].message;
-               break;
-               case 'city':
-               body['cityError']=err.errors[field].message;
-               break;
-               case 'image':
-               body['imageError']=err.errors[field].message;
-               break;
-          }
-     }
-}
 
 //insert new employee
 function insert_employee(req,res){
@@ -122,3 +99,28 @@ function update_employee(req,res){
 
      })
 }
+
+function handleValidationError(err,body){
+     for(field in err.errors)
+     {
+          switch(err.errors[field].path)
+          {
+               case 'fullname':
+               body['fullNameError']=err.errors[field].message;
+               break;
+               case 'email':
+               body['emailError']=err.errors[field].message;
+               break;
+               case 'mobile':
+               body['mobileError']=err.errors[field].message;
+               break;
+               case 'city':
+               body['cityError']=err.errors[field].message;
+               break;
+               case 'image':
+               body['imageError']=err.errors[field].message;
+               break;
+          }
+     }
+}
+
