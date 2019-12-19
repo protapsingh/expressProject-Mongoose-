@@ -19,6 +19,7 @@ var storage = multer.diskStorage({
 router.get('/signUp',userController.userCreate);
 router.post('/signUp',upload.single('image'),userController.userStore);
 router.get('/login',userController.userLogin);
+router.post('/login',userController.userLoginPost);
 
 
 

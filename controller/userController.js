@@ -10,7 +10,8 @@ exports.userStore=async (req,res,next)=>{
     // res.send(req.file);
     var exist_user= await User.findOne({email:req.body.email});
     if(exist_user){
-        res.send("User Exist");
+        const msg="Email already exists!";
+        res.render('user/signUp',{viewTitle:'Sign Up Here!' ,layout:'welcomeLayout.hbs',message:msg,user:req.body}); 
     }else{
 
         const user= new User();
@@ -30,6 +31,30 @@ exports.userLogin=(req,res)=>{
     res.render("user/login",{viewTitle:'Login Here!',layout:'welcomeLayout.hbs'});
 }
 
+exports.userLoginPost= async (req,res)=>{
+    const email=req.body.email;
+    const password=req.body.password;
+    const user= await User.findOne({email:email});
+    if(user){
+        bcrypt.compare(password, user.password, function(err, match) {
+            if(match) {
+             
+             req.session.user_id=user._id;
+             const data= User.findById({_id:req.session.user_id},(err,data)=>{
+                 if (err) throw err;
+                 res.send( data.fullname);
+             });
+            }else {
+                const msg="Invalid password!";
+                res.render("user/login",{viewTitle:'Login Here!', error:msg,layout:'welcomeLayout.hbs'});
+            } 
+          });
+       
+    }else{
+        const msg="Invalid email address!"
+        res.render("user/login",{viewTitle:'Login Here!', error:msg,layout:'welcomeLayout.hbs'});
+    }
+}
 
 function add_user(req,res){
 

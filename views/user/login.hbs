@@ -1,6 +1,11 @@
 <h3>{{viewTitle}}</h3>
-<h3>{{message}}</h3>
-<form action="#" enctype="multipart/form-data"  method="post">
+<div class="text-success">
+       {{message}}
+</div>
+<div class="text-danger">
+       {{error}}
+</div>
+<form action="/user/login" method="post">
    <div class="form-group col-md-4">
         <label>Email</label>
         <input type="email" class="form-control" name="email" placeholder="Email Address" value="{{employee.city}}">
