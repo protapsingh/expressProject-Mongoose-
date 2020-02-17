@@ -20,6 +20,11 @@ router.get('/signUp',userController.userCreate);
 router.post('/signUp',upload.single('image'),userController.userStore);
 router.get('/login',userController.userLogin);
 router.post('/login',userController.userLoginPost);
+router.get('/list',userController.userList);
+router.get('/edit/:id',userController.edit);
+router.post('/edit',upload.single('image'),userController.update);
+router.get('/delete/:id',userController.delete);
+
 
 
 
